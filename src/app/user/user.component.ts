@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
     templateUrl: './user.component.html',
     styleUrl: './user.component.scss',
 })
-export class UserComponent {}
+export class UserComponent {
+    selectedUser = {
+        id: 0,
+        name: 'Fin Cry',
+    };
+
+    onSelectUser() {
+        console.log('Click!');
+    }
+}

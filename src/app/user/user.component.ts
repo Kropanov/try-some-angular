@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, Signal, signal } from '@angular/core';
+import { single } from 'rxjs';
 
 @Component({
     selector: 'app-user',
@@ -8,12 +9,14 @@ import { Component } from '@angular/core';
     styleUrl: './user.component.scss',
 })
 export class UserComponent {
-    selectedUser = {
+    selectedUser = signal({
         id: 0,
-        name: 'Fin Cry',
-    };
+        name: 'First name',
+    });
+
+    duplicateValue: Signal<String> = computed(() => 'duplicate/' + this.selectedUser().name);
 
     onSelectUser() {
-        console.log('Click!');
+        this.selectedUser.set({ id: 0, name: 'Some text1' });
     }
 }

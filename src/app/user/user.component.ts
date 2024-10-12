@@ -1,5 +1,4 @@
-import { Component, computed, Signal, signal } from '@angular/core';
-import { single } from 'rxjs';
+import { Component, computed, input, Input, Signal, signal } from '@angular/core';
 
 @Component({
     selector: 'app-user',
@@ -9,6 +8,9 @@ import { single } from 'rxjs';
     styleUrl: './user.component.scss',
 })
 export class UserComponent {
+    @Input({ required: true }) firstName!: string;
+    lastName = input.required<string>();
+
     selectedUser = signal({
         id: 0,
         name: 'First name',

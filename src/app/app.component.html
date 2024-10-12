@@ -3,7 +3,16 @@
 <main>
     <ul>
         <li>
-            <app-user [firstName]="'Some name'" [lastName]="'Last name'" />
+            <app-user (select)="onSelectUser($event())" [name]="users[0].name" [id]="users[0].id" />
+        </li>
+        <li>
+            <app-user (select)="onSelectUser($event())" [name]="users[1].name" [id]="users[1].id" />
+        </li>
+        <li>
+            <app-user (select)="onSelectUser($event())" [name]="users[2].name" [id]="users[2].id" />
+        </li>
+        <li>
+            <app-user (select)="onSelectUser($event())" [name]="users[3].name" [id]="users[3].id" />
         </li>
     </ul>
 </main>

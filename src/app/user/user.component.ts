@@ -1,4 +1,4 @@
-import { Component, computed, input, Input, Signal, signal } from '@angular/core';
+import { Component, computed, input, Input, InputSignal, output, Signal, signal } from '@angular/core';
 
 @Component({
     selector: 'app-user',
@@ -8,17 +8,11 @@ import { Component, computed, input, Input, Signal, signal } from '@angular/core
     styleUrl: './user.component.scss',
 })
 export class UserComponent {
-    @Input({ required: true }) firstName!: string;
-    lastName = input.required<string>();
-
-    selectedUser = signal({
-        id: 0,
-        name: 'First name',
-    });
-
-    duplicateValue: Signal<String> = computed(() => 'duplicate/' + this.selectedUser().name);
+    id = input.required<number>();
+    name = input.required<string>();
+    select = output<InputSignal<number>>();
 
     onSelectUser() {
-        this.selectedUser.set({ id: 0, name: 'Some text1' });
+        this.select.emit(this.id);
     }
 }

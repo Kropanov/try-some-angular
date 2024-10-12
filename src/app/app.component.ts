@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
+import { USERS } from './data/users';
 
 @Component({
     selector: 'app-root',
@@ -12,5 +13,9 @@ import { UserComponent } from './user/user.component';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    title = 'try-some-angular';
+    users = USERS;
+
+    onSelectUser(id: number) {
+        console.log(id);
+    }
 }

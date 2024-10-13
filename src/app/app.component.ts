@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -15,8 +15,10 @@ import { TaskComponent } from './task/task.component';
 })
 export class AppComponent {
     users = USERS;
+    selectedUser = signal({ id: 0, name: '' });
 
     onSelectUser(id: number) {
-        console.log(id);
+        const res = this.users.filter((user) => user.id === id);
+        this.selectedUser.set(res[0]);
     }
 }

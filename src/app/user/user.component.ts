@@ -1,4 +1,4 @@
-import { Component, computed, input, Input, InputSignal, output, Signal, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'app-user',
@@ -8,11 +8,10 @@ import { Component, computed, input, Input, InputSignal, output, Signal, signal 
     styleUrl: './user.component.scss',
 })
 export class UserComponent {
-    id = input.required<number>();
-    name = input.required<string>();
-    select = output<InputSignal<number>>();
+    user = input.required<{ id: number; name: string }>();
+    select = output<number>();
 
     onSelectUser() {
-        this.select.emit(this.id);
+        this.select.emit(this.user().id);
     }
 }

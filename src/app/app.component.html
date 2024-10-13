@@ -3,18 +3,11 @@
 <main>
     <div class="container">
         <ul>
-            <li>
-                <app-user (select)="onSelectUser($event)" [user]="users[0]" />
-            </li>
-            <li>
-                <app-user (select)="onSelectUser($event)" [user]="users[1]" />
-            </li>
-            <li>
-                <app-user (select)="onSelectUser($event)" [user]="users[2]" />
-            </li>
-            <li>
-                <app-user (select)="onSelectUser($event)" [user]="users[3]" />
-            </li>
+            @for (user of users; track user.id) {
+                <li>
+                    <app-user [user]="user" (select)="onSelectUser($event)"> </app-user>
+                </li>
+            }
         </ul>
         <app-task [name]="selectedUser()?.name" />
     </div>

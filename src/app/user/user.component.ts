@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { User } from '../types';
 
 @Component({
     selector: 'app-user',
@@ -8,7 +9,7 @@ import { Component, input, output } from '@angular/core';
     styleUrl: './user.component.scss',
 })
 export class UserComponent {
-    user = input.required<{ id: number; name: string }>();
+    user = input.required<User>();
     select = output<number>();
 
     onSelectUser() {

@@ -1,18 +1,21 @@
 <app-header />
 
 <main>
-    <ul>
-        <li>
-            <app-user (select)="onSelectUser($event())" [name]="users[0].name" [id]="users[0].id" />
-        </li>
-        <li>
-            <app-user (select)="onSelectUser($event())" [name]="users[1].name" [id]="users[1].id" />
-        </li>
-        <li>
-            <app-user (select)="onSelectUser($event())" [name]="users[2].name" [id]="users[2].id" />
-        </li>
-        <li>
-            <app-user (select)="onSelectUser($event())" [name]="users[3].name" [id]="users[3].id" />
-        </li>
-    </ul>
+    <div class="container">
+        <ul>
+            <li>
+                <app-user (select)="onSelectUser($event())" [name]="users[0].name" [id]="users[0].id" />
+            </li>
+            <li>
+                <app-user (select)="onSelectUser($event())" [name]="users[1].name" [id]="users[1].id" />
+            </li>
+            <li>
+                <app-user (select)="onSelectUser($event())" [name]="users[2].name" [id]="users[2].id" />
+            </li>
+            <li>
+                <app-user (select)="onSelectUser($event())" [name]="users[3].name" [id]="users[3].id" />
+            </li>
+        </ul>
+        <app-task />
+    </div>
 </main>

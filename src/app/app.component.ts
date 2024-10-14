@@ -15,11 +15,13 @@ import { TaskComponent } from './task/task.component';
 })
 export class AppComponent {
     users = USERS;
-    selectedUserId = signal<number>(1);
+    selectedUserId?: number;
 
-    selectedUser = computed(() => this.users.find((user) => user.id === this.selectedUserId()));
+    get selectedUser() {
+        return this.users.find((user) => user.id === this.selectedUserId);
+    }
 
     onSelectUser(id: number) {
-        this.selectedUserId.set(id);
+        this.selectedUserId = id;
     }
 }

@@ -9,6 +9,11 @@
                 </li>
             }
         </ul>
-        <app-task [name]="selectedUser()?.name" />
+
+        @if (selectedUser) {
+            <app-task [name]="selectedUser.name" />
+        } @else {
+            <p>Select a user to see their tasks</p>
+        }
     </div>
 </main>

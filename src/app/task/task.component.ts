@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
     styleUrl: './task.component.scss',
 })
 export class TaskComponent {
-    @Input() name?: string;
+    @Input({ required: true }) name!: string;
 }

@@ -34,4 +34,11 @@ export const TASKS = [
         description: 'Create a wireframe for the new user interface and present it to the design team.',
         date: '2024-10-18',
     },
+    {
+        id: 6,
+        userId: 1,
+        title: 'Design wireframe for new UI',
+        description: 'Create a wireframe for the new user interface and present it to the design team.',
+        date: '2024-10-18',
+    },
 ];

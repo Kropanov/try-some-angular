@@ -11,6 +11,7 @@ import { User } from '../types';
 export class UserComponent {
     user = input.required<User>();
     select = output<number>();
+    selected = input.required<boolean>();
 
     onSelectUser() {
         this.select.emit(this.user().id);

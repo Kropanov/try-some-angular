@@ -3,3 +3,7 @@ p {
     margin: 20px 0 0 10px;
     cursor: pointer;
 }
+
+p.active {
+    color: green;
+}

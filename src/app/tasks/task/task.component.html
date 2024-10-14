@@ -1,6 +1,7 @@
 <section>
     <h3>{{ task().title }}</h3>
-    <time>{{ task().date }}</time>
-    <div>{{ task().description }}</div>
+    <time class="date">{{ task().date }}</time>
+    <div class="description">{{ task().description }}</div>
+    <button (click)="onCompleteTask()">Complete</button>
 </section>
 <hr />

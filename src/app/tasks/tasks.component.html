@@ -1,0 +1,9 @@
+<div>
+    @if (doesUserHaveTasks()) {
+        @for (task of selectedUserTasks(); track task.id) {
+            <app-task [task]="task" />
+        }
+    } @else {
+        <h1>The user has no any task.</h1>
+    }
+</div>

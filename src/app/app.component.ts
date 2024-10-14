@@ -4,12 +4,13 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { USERS } from './data/users';
-import { TaskComponent } from './task/task.component';
+import { TaskComponent } from './tasks/task/task.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, HeaderComponent, UserComponent, TaskComponent],
+    imports: [CommonModule, RouterOutlet, HeaderComponent, UserComponent, TaskComponent, TasksComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })

@@ -2,7 +2,7 @@
 
 <main>
     <div class="container">
-        <ul>
+        <ul class="user-list">
             @for (user of users; track user.id) {
                 <li>
                     <app-user [user]="user" (select)="onSelectUser($event)"> </app-user>
@@ -10,10 +10,12 @@
             }
         </ul>
 
-        @if (selectedUser) {
-            <app-task [name]="selectedUser.name" />
-        } @else {
-            <p>Select a user to see their tasks</p>
-        }
+        <div class="user-tasks">
+            @if (selectedUser) {
+                <app-tasks [selectedUserId]="selectedUserId" />
+            } @else {
+                <h1>Select a user to see their tasks</h1>
+            }
+        </div>
     </div>
 </main>

@@ -1,0 +1,31 @@
+.user-tasks {
+    width: 100%;
+    display: flex;
+    margin: 20px 0 0 0;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    height: 650px;
+}
+
+.header {
+    min-width: 650px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        border-radius: 10px;
+        border: #a0a0a0 solid 1px;
+        color: white;
+        background: black;
+        padding: 10px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+}
+
+hr {
+    margin-left: 20px;
+}

@@ -11,6 +11,7 @@ import { TaskComponent } from './task/task.component';
 })
 export class TasksComponent {
     tasks = signal(TASKS);
+    selectedUserName = input.required();
     selectedUserId = input.required();
 
     selectedUserTasks = computed(() => {

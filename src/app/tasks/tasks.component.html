@@ -1,4 +1,12 @@
-<div>
+<div class="header">
+    <h1>The {{ selectedUserName() }}' tasks</h1>
+    <div>
+        <button>Add task</button>
+    </div>
+</div>
+<hr />
+
+<div class="user-tasks">
     @if (doesUserHaveTasks()) {
         @for (task of selectedUserTasks(); track task.id) {
             <app-task (complete)="onCompleteTask($event)" [task]="task" />

@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { TASKS } from '../data/tasks';
 import { TaskComponent } from './task/task.component';
 
@@ -14,6 +14,8 @@ export class TasksComponent {
     selectedUserName = input.required();
     selectedUserId = input.required();
 
+    add = output<void>();
+
     selectedUserTasks = computed(() => {
         return this.tasks().filter((task) => task.userId === this.selectedUserId());
     });
@@ -22,5 +24,9 @@ export class TasksComponent {
 
     onCompleteTask(id: number) {
         this.tasks.set(this.tasks().filter((task) => task.id !== id));
+    }
+
+    onAddTask() {
+        this.add.emit();
     }
 }

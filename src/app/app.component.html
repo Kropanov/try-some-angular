@@ -1,6 +1,10 @@
 <app-header />
 
 <main>
+    @if (isAddingTask()) {
+        <app-new-task (cancel)="onCancelAddingTask()" (add)="addNewTask()" />
+    }
+
     <div class="container">
         <ul class="user-list">
             @for (user of users; track user.id) {
@@ -13,7 +17,11 @@
 
         <div class="user-tasks">
             @if (selectedUser) {
-                <app-tasks [selectedUserName]="selectedUser.name" [selectedUserId]="selectedUserId" />
+                <app-tasks
+                    (add)="onStartAddingTask()"
+                    [selectedUserName]="selectedUser.name"
+                    [selectedUserId]="selectedUserId"
+                />
             } @else {
                 <h1>Select a user to see their tasks</h1>
             }

@@ -23,3 +23,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #888;
 }
+
+button {
+    width: 100px;
+    border-radius: 10px;
+    border: #a0a0a0 solid 1px;
+    color: white;
+    background: black;
+    padding: 10px;
+    margin-top: 15px;
+    margin-left: auto;
+    cursor: pointer;
+}

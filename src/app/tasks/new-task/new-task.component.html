@@ -1,0 +1,21 @@
+<div (click)="onCancelTask()" class="backdrop"></div>
+
+<div class="form">
+    <div class="container">
+        <h2>Add task</h2>
+
+        <h3>Title</h3>
+        <input type="text" name="title" id="title" />
+
+        <h3>Time</h3>
+        <input type="time" name="time" id="time-input" />
+
+        <h3>Description</h3>
+        <input type="text" name="description" id="description" />
+
+        <div class="button-section">
+            <button (click)="onCancelTask()" class="cancel-button">Cancel</button>
+            <button (click)="onAddTask()">Add</button>
+        </div>
+    </div>
+</div>

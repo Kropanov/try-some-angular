@@ -27,15 +27,30 @@
         text-align: center;
     }
 
+    p {
+        margin-bottom: 10px;
+        margin-left: 5px;
+    }
+
     button {
         margin-top: 20px;
     }
 
     .button-section {
+        margin-top: 20px;
         margin-left: auto;
     }
 
     .cancel-button {
+        margin-right: 10px;
+    }
+
+    input {
+        border-radius: 10px;
+        border: white solid 1px;
+        padding: 10px;
+        background: black;
+        color: white;
         margin-right: 10px;
     }
 }

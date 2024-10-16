@@ -1,20 +1,22 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { TASKS } from '../data/tasks';
 import { TaskComponent } from './task/task.component';
+import { NewTaskComponent } from './new-task/new-task.component';
+import { Task, TaskFormData } from '../types';
 
 @Component({
     selector: 'app-tasks',
     standalone: true,
-    imports: [TaskComponent],
+    imports: [TaskComponent, NewTaskComponent],
     templateUrl: './tasks.component.html',
     styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
-    tasks = signal(TASKS);
-    selectedUserName = input.required();
-    selectedUserId = input.required();
+    tasks = signal<Task[]>(TASKS);
+    isAddingTask = signal(false);
 
-    add = output<void>();
+    selectedUserName = input.required();
+    selectedUserId = input.required<number>();
 
     selectedUserTasks = computed(() => {
         return this.tasks().filter((task) => task.userId === this.selectedUserId());
@@ -26,7 +28,24 @@ export class TasksComponent {
         this.tasks.set(this.tasks().filter((task) => task.id !== id));
     }
 
-    onAddTask() {
-        this.add.emit();
+    onStartAddingTask() {
+        this.isAddingTask.set(true);
+    }
+
+    onCancelAddingTask() {
+        this.isAddingTask.set(false);
+    }
+
+    addNewTask(data: TaskFormData) {
+        const task: Task = {
+            id: new Date().getTime(),
+            userId: this.selectedUserId(),
+            title: data.title,
+            date: data.date,
+            description: data.description,
+        };
+
+        this.tasks.set([...this.tasks(), task]);
+        this.isAddingTask.set(false);
     }
 }

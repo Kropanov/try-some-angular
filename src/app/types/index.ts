@@ -10,3 +10,9 @@ export type Task = {
     date: string;
     description: string;
 };
+
+export type TaskFormData = {
+    title: string;
+    date: string;
+    description: string;
+};

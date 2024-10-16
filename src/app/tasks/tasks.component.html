@@ -1,7 +1,11 @@
+@if (isAddingTask()) {
+    <app-new-task (cancel)="onCancelAddingTask()" (add)="addNewTask($event)" />
+}
+
 <div class="header">
     <h1>The {{ selectedUserName() }}' tasks</h1>
     <div>
-        <button (click)="onAddTask()">Add task</button>
+        <button (click)="onStartAddingTask()">Add task</button>
     </div>
 </div>
 <hr />

@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -24,27 +24,14 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    users = USERS;
+    users = signal(USERS);
     selectedUserId?: number;
-    isAddingTask = signal(false);
 
     get selectedUser() {
-        return this.users.find((user) => user.id === this.selectedUserId);
+        return this.users().find((user) => user.id === this.selectedUserId);
     }
 
     onSelectUser(id: number) {
         this.selectedUserId = id;
-    }
-
-    onStartAddingTask() {
-        this.isAddingTask.set(true);
-    }
-
-    onCancelAddingTask() {
-        this.isAddingTask.set(false);
-    }
-
-    addNewTask() {
-        console.log('Add new task!');
     }
 }

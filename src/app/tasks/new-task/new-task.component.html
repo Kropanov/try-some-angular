@@ -1,21 +1,21 @@
 <div (click)="onCancelTask()" class="backdrop"></div>
 
-<div class="form">
+<form class="form" (ngSubmit)="onSubmit()">
     <div class="container">
         <h2>Add task</h2>
 
-        <h3>Title</h3>
-        <input type="text" name="title" id="title" />
+        <p>Title</p>
+        <input type="text" name="title" id="title" [(ngModel)]="enteredTitle" />
 
-        <h3>Time</h3>
-        <input type="time" name="time" id="time-input" />
+        <p>Time</p>
+        <input type="time" name="time" id="time-input" [(ngModel)]="enteredDate" />
 
-        <h3>Description</h3>
-        <input type="text" name="description" id="description" />
+        <p>Description</p>
+        <input type="text" name="description" id="description" [(ngModel)]="enteredDescription" />
 
         <div class="button-section">
             <button (click)="onCancelTask()" class="cancel-button">Cancel</button>
-            <button (click)="onAddTask()">Add</button>
+            <button type="submit">Create</button>
         </div>
     </div>
-</div>
+</form>

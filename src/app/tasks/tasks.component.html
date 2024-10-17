@@ -3,7 +3,7 @@
 }
 
 <div class="header">
-    <h1>The {{ selectedUserName() }}' tasks</h1>
+    <h1>The {{ selectedUserName() }}'s tasks</h1>
     <div>
         <button (click)="onStartAddingTask()">Add task</button>
     </div>
@@ -13,7 +13,7 @@
 <div class="user-tasks">
     @if (doesUserHaveTasks()) {
         @for (task of selectedUserTasks(); track task.id) {
-            <app-task (complete)="onCompleteTask($event)" [task]="task" />
+            <app-task [task]="task" />
         }
     } @else {
         <h1>The user has no any task.</h1>

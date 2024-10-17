@@ -24,10 +24,6 @@ export class TasksComponent {
 
     doesUserHaveTasks = computed(() => this.selectedUserTasks().length > 0);
 
-    onCompleteTask(id: number) {
-        this.tasksService.removeTaskById(id);
-    }
-
     onStartAddingTask() {
         this.isAddingTask.set(true);
     }

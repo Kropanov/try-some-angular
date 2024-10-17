@@ -1,5 +1,9 @@
 @if (isAddingTask()) {
-    <app-new-task [selectedUserId]="selectedUserId()" (cancel)="onCancelAddingTask()" />
+    <app-new-task
+        (cancel)="onCancelAddingTask()"
+        [selectedUserId]="selectedUserId()"
+        [selectedUserName]="selectedUserName()"
+    />
 }
 
 <div class="header">

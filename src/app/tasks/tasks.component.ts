@@ -13,7 +13,7 @@ import { TasksService } from './tasks.service';
 export class TasksComponent {
     isAddingTask = signal(false);
 
-    selectedUserName = input.required();
+    selectedUserName = input.required<string>();
     selectedUserId = input.required<number>();
 
     constructor(public tasksService: TasksService) {}

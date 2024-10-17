@@ -8,12 +8,19 @@ import { newTaskData, Task } from '../types';
 export class TasksService {
     private tasksSignal = signal(TASKS);
 
-    constructor() {}
+    constructor() {
+        const tasks = localStorage.getItem('tasks');
+
+        if (tasks) {
+            this.tasksSignal.set(JSON.parse(tasks));
+        }
+    }
 
     public getTasksById = (id: number) => computed(() => this.tasksSignal().filter((task) => task.userId === id));
 
     public removeTaskById(id: number) {
         this.tasksSignal.update((tasks) => tasks.filter((task) => task.id !== id));
+        this.saveTasks();
     }
 
     public addTask(data: newTaskData, userId: number) {
@@ -26,5 +33,10 @@ export class TasksService {
         };
 
         this.tasksSignal.update((tasks) => [...tasks, task]);
+        this.saveTasks();
+    }
+
+    public saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasksSignal()));
     }
 }

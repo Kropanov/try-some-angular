@@ -12,6 +12,8 @@ import { TasksService } from '../tasks.service';
 })
 export class NewTaskComponent {
     selectedUserId = input.required<number>();
+    selectedUserName = input.required<string>();
+
     cancel = output<void>();
     tasksService = inject(TasksService);
 

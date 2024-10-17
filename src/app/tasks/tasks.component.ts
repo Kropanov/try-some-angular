@@ -1,8 +1,7 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { TASKS } from '../data/tasks';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
-import { Task, TaskFormData } from '../types';
+import { TasksService } from './tasks.service';
 
 @Component({
     selector: 'app-tasks',
@@ -12,20 +11,21 @@ import { Task, TaskFormData } from '../types';
     styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
-    tasks = signal<Task[]>(TASKS);
     isAddingTask = signal(false);
 
     selectedUserName = input.required();
     selectedUserId = input.required<number>();
 
+    constructor(public tasksService: TasksService) {}
+
     selectedUserTasks = computed(() => {
-        return this.tasks().filter((task) => task.userId === this.selectedUserId());
+        return this.tasksService.getTasksById(this.selectedUserId())();
     });
 
     doesUserHaveTasks = computed(() => this.selectedUserTasks().length > 0);
 
     onCompleteTask(id: number) {
-        this.tasks.set(this.tasks().filter((task) => task.id !== id));
+        this.tasksService.removeTaskById(id);
     }
 
     onStartAddingTask() {
@@ -33,19 +33,6 @@ export class TasksComponent {
     }
 
     onCancelAddingTask() {
-        this.isAddingTask.set(false);
-    }
-
-    addNewTask(data: TaskFormData) {
-        const task: Task = {
-            id: new Date().getTime(),
-            userId: this.selectedUserId(),
-            title: data.title,
-            date: data.date,
-            description: data.description,
-        };
-
-        this.tasks.set([...this.tasks(), task]);
         this.isAddingTask.set(false);
     }
 }

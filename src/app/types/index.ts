@@ -11,7 +11,7 @@ export type Task = {
     description: string;
 };
 
-export type TaskFormData = {
+export type newTaskData = {
     title: string;
     date: string;
     description: string;

@@ -1,4 +1,4 @@
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, inject, input, OnDestroy, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { newTaskData } from '../../types';
 import { TasksService } from '../tasks.service';
@@ -10,7 +10,7 @@ import { TasksService } from '../tasks.service';
     templateUrl: './new-task.component.html',
     styleUrl: './new-task.component.scss',
 })
-export class NewTaskComponent {
+export class NewTaskComponent implements OnDestroy {
     selectedUserId = input.required<number>();
     selectedUserName = input.required<string>();
 
@@ -30,5 +30,9 @@ export class NewTaskComponent {
 
         this.tasksService.addTask(taskData, this.selectedUserId());
         this.cancel.emit();
+    }
+
+    ngOnDestroy(): void {
+        console.log('Destroy form!');
     }
 }

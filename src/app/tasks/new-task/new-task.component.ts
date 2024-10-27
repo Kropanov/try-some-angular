@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, input, OnDestroy, output, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, OnDestroy, output, signal, viewChild, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { newTaskData } from '../../types';
 import { TasksService } from '../tasks.service';
@@ -11,7 +11,8 @@ import { TasksService } from '../tasks.service';
     styleUrl: './new-task.component.scss',
 })
 export class NewTaskComponent implements OnDestroy {
-    @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+    // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+    form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
     selectedUserId = input.required<number>();
     selectedUserName = input.required<string>();
@@ -31,7 +32,8 @@ export class NewTaskComponent implements OnDestroy {
         };
 
         this.tasksService.addTask(taskData, this.selectedUserId());
-        this.form?.nativeElement.reset();
+        this.form().nativeElement.reset();
+        // this.form?.nativeElement.reset();
         this.cancel.emit();
     }
 

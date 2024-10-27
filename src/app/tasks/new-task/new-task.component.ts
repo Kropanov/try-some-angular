@@ -17,19 +17,15 @@ export class NewTaskComponent {
     cancel = output<void>();
     tasksService = inject(TasksService);
 
-    enteredTitle = signal('');
-    enteredDate = signal('');
-    enteredDescription = signal('');
-
     onCancelTask() {
         this.cancel.emit();
     }
 
-    onSubmit() {
+    onSubmit(enteredTitle: HTMLInputElement, enteredDate: HTMLInputElement, enteredDescription: HTMLInputElement) {
         const taskData = {
-            title: this.enteredTitle(),
-            date: this.enteredDate(),
-            description: this.enteredDescription(),
+            title: enteredTitle.value,
+            date: enteredDate.value,
+            description: enteredDescription.value,
         };
 
         this.tasksService.addTask(taskData, this.selectedUserId());

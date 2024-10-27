@@ -1,17 +1,17 @@
 <div (click)="onCancelTask()" class="backdrop"></div>
 
-<form class="form" (ngSubmit)="onSubmit()">
+<form class="form" (ngSubmit)="onSubmit(enteredTitle, enteredDate, enteredDescription)">
     <div class="container">
         <h2>New Task for {{ selectedUserName() }}</h2>
 
         <p>Title</p>
-        <input type="text" name="title" id="title" [(ngModel)]="enteredTitle" />
+        <input type="text" name="title" id="title" #enteredTitle />
 
         <p>Time</p>
-        <input type="date" name="time" id="time-input" [(ngModel)]="enteredDate" />
+        <input type="date" name="time" id="time-input" #enteredDate />
 
         <p>Description</p>
-        <input type="text" name="description" id="description" [(ngModel)]="enteredDescription" />
+        <input type="text" name="description" id="description" #enteredDescription />
 
         <div class="button-section">
             <button (click)="onCancelTask()" class="cancel-button">Cancel</button>

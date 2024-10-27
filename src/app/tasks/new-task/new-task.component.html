@@ -1,6 +1,6 @@
 <div (click)="onCancelTask()" class="backdrop"></div>
 
-<form class="form" (ngSubmit)="onSubmit(enteredTitle, enteredDate, enteredDescription)">
+<form class="form" (ngSubmit)="onSubmit(enteredTitle, enteredDate, enteredDescription)" #form>
     <div class="container">
         <h2>New Task for {{ selectedUserName() }}</h2>
 
